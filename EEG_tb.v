@@ -30,16 +30,7 @@ module tb_APA_Filter;
         #5 clk = 0;
     end
 
-    // Test stimulus
-    initial begin
-        // Initialize signals
-        reset = 1;
-        noisy_signal = 16'b0;
-        desired_signal = 16'b0;
-        
-        // Apply reset
-        #10 reset = 0;
-
+   
         // Open the noisy signal text file for reading
         noisy_file = $fopen("chb01_05_channel_1.txt", "r");
         desired_file = $fopen("chb01_15_channel_1.txt", "r");
@@ -53,12 +44,7 @@ module tb_APA_Filter;
                 $fscanf(noisy_file, "%d\n", input_signal);
                 noisy_signal = input_signal;   // Apply the noisy signal to the filter
 
-                // Read the desired clean signal from chb01_15_channel_1.txt
-                $fscanf(desired_file, "%d\n", target_signal);
-                desired_signal = target_signal; // Set the desired clean signal
-
-                #10;  // Wait for a few clock cycles for the filter to process
-            end
+               
             $fclose(noisy_file);
             $fclose(desired_file);
         end else begin
