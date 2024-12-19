@@ -25,9 +25,7 @@
                 w[i] <= 16'b0;
                 x[i] <= 16'b0;
         end    
-            filtered_signal <= 16'b0;
-            weight <= 16'b0;
-        end
+        
         else begin
             // Shift the delay line
             for (i = M-1; i > 0; i = i - 1) begin
